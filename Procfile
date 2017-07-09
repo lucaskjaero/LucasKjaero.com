@@ -1,0 +1,1 @@
+web: gunicorn LucasKjaeroWebsite.wsgi --log-file -

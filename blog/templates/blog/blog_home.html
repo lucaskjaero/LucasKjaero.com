@@ -1,0 +1,6 @@
+{% extends "blog/post_list.html" %}
+
+{% block blog_link %}class="page-scroll" href="#blog"{% endblock %}
+
+{% block previous_link %}{% url 'blog:index_with_number' previous_page %}{% endblock %}
+{% block next_link %}{% url 'blog:index_with_number' next_page %}{% endblock %}

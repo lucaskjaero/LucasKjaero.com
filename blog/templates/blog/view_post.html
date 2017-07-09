@@ -1,0 +1,26 @@
+{% extends "blog/blog_base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block header_image %}{{ post.image }}{% endblock %}
+
+{% block header %}
+    <div class="post-heading">
+        <h1>{{ post.title }}</h1>
+        <h2 class="subheading">{{ post.subtitle }}</h2>
+        <span class="meta">Posted on {{ post.created_at }} in <a href="{% url 'blog:view_category' post.category.slug %}">{{ post.category }}</a>.</span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {{ post.content|safe }}
+                </div>
+            </div>
+        </div>
+    </article>
+{% endblock %}

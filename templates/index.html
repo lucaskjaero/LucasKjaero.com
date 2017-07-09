@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}LucasKjaero.com - The Official Website of Lucas Kjaero{% endblock %}
+
+{% block head %}
+
+{% endblock %}
+
+<!-- Stuff for the header. Self-links allow page-scroll to do its magic -->
+{% block home_link %}class="navbar-brand page-scroll" href="#page-top"{% endblock %}
+{% block about_link %}class="page-scroll" href="#about"{% endblock %}
+{% block blog_link %}class="page-scroll" href="#blog"{% endblock %}
+{% block portfolio_link %}class="page-scroll" href="#portfolio"{% endblock %}
+{% block contact_link %}class="page-scroll" href="#contact"{% endblock %}
+
+{% block body %}
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>Lucas Kjaero</h1>
+                <hr>
+                <p>Technologist. Traveler.</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">The perfect addition to your team.</h2>
+                    <hr class="light">
+                    <p class="text-faded">I'm a committed data scientist with a strong technical background and a broadly focused undergraduate education.
+                        I will use technically sound data analysis with an eye to what makes the data important.</p>
+                    <p class="text-faded">I was a fellow at Carnegie Mellon analyzing traffic data, and have worked on projects in diverse areas such as stock trading algorithms and Mandarin Chinese.
+                        Our team's stock trading algorithm made $10,000 (virtual) in the first week of testing.</p>
+                    <p class="text-faded">I'm passionate about bringing valuable and actionable insights from your data. I work best with teams.</p>
+                    <p class="text-faded">I look forward to working with you.</p>
+                    <a href="https://www.dropbox.com/s/kt1ewmpbz1nawcz/lucas-kjaero-resume.pdf?dl=1" class="btn btn-default btn-xl">View Resume</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Latest Blog Posts</h2>
+                    <hr class="primary">
+
+                    {% if latest_posts %}
+                        {% for post in latest_posts %}
+                            <div class="post-preview">
+                            <a href="/blog/view/{{ post.slug }}/">
+                                <h2 class="post-title">
+                                    {{ post.title }}
+                                </h2>
+                                <h3 class="post-subtitle">
+                                    {{ post.subtitle }}
+                                </h3>
+                            </a>
+                            <p class="post-meta">Posted on {{ post.created_at }}</p>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    {% else %}
+                        <p>No blog posts yet.</p>
+                    {% endif %}
+
+                    <a href="{% url 'blog:index' %}" class="btn btn-primary btn-xl">View More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get in Touch</h2>
+                    <hr class="primary">
+                    <p>Want to work with me? Fantastic! Give me a call or send me an email and I will get back to you as soon as possible.</p>
+                </div>
+                <div class="col-lg-4 col-lg-offset-2 text-center">
+                    <span class="glyphicon glyphicon-earphone"></span>
+                    <p>(&#054;&#049;&#057;)&#032;&#053;&#054;&#055;&#045;&#051;&#051;&#048;&#056;</p>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                    <!-- Email address obfustication provided by http://wbwip.com/wbw/emailencoder.html -->
+                    <p><a href="mailto:&#108;&#117;&#099;&#097;&#115;&#064;&#108;&#117;&#099;&#097;&#115;&#107;&#106;&#097;&#101;&#114;&#111;&#046;&#099;&#111;&#109;">&#108;&#117;&#099;&#097;&#115;&#064;&#108;&#117;&#099;&#097;&#115;&#107;&#106;&#097;&#101;&#114;&#111;&#046;&#099;&#111;&#109;</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
