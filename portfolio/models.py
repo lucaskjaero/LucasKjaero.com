@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.TextField(max_length=100)
+    slug = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -10,7 +11,9 @@ class Category(models.Model):
 
 class Technology(models.Model):
     name = models.CharField(max_length=50)
-    icon = models.CharField(max_length=300)
+    slug = models.CharField(max_length=50)
+    link = models.CharField(max_length=300, blank=True)
+    icon = models.CharField(max_length=300, blank=True)
 
     def __str__(self):
         return self.name
@@ -27,7 +30,7 @@ class Project(models.Model):
     view_link = models.CharField(max_length=300, blank=True)
 
     technologies = models.ManyToManyField(Technology)
-    category = models.ForeignKey(Category, null=True)
+    category = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.name
