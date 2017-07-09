@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^gaojikouyu/', views.gaojikouyu, name="gaojikouyu"),
     url(r'^members/', views.members, name="members"),
     url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^portfolio/', include('portfolio.urls'), namespace="portfolio"),
+    url(r'^portfolio/', include('portfolio.urls', namespace="portfolio")),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', views.index, name='index'),
 ]
