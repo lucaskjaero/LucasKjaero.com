@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}Lucas Kjaero's Portfolio{% endblock %}
+
+{% block head %}
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/blog.css' %}" />
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block body %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('{% block header_image %}{% static 'blog/images/blog-bg.jpg' %}{% endblock %}')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    {% block header %}
+                        <div class="site-heading">
+                            <h1>Lucas Kjaero's Portfolio</h1>
+                            <hr class="small">
+                        </div>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="portfolio">
+        {% block content %}{% endblock %}
+    </section>
+{% endblock %}
