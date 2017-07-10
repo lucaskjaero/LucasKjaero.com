@@ -9,7 +9,24 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 {% if project.visible %}
-                    <p>{{ project.description|safe }}</p>
+                    <p>
+                        <h3>Description:</h3>
+                        {{ project.description|safe }}
+                    </p>
+                    <p>
+                        <h3>What I Learned:</h3>
+                        {{ project.what_i_learned|safe }}
+                    </p>
+                    <p>
+                        Built with
+                        {% for technology in project.technologies.all %}
+                            {% if forloop.last %}and {% endif %}<a href="{% url 'portfolio:technology' technology.slug %}">{{technology.name}}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}<br>
+                        Posted in
+                        {% for category in project.categories.all %}
+                            <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}<br>
+                    </p>
                     {% if project.source_open %}
                         <a href="{{ project.view_link }}" class="btn btn-primary btn-xl">View Source</a>
                     {% else %}

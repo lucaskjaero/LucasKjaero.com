@@ -3,26 +3,27 @@
 {% load staticfiles %}
 
 {% block intro %}
-    Search by technology<br>
-    {% if technologies %}
-        <p>{% for technology in technologies %}
-            {% if technology.visible %}
-                <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>{% if not forloop.last %}, {% endif %}
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            {% if technologies %}
+                <p><h3>Browse by technology</h3>
+                    {% for technology in technologies %}
+                        {% if technology.visible %}
+                            <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>{% if not forloop.last %}, {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </p>
             {% endif %}
-        {% endfor %}</p>
-    {% else %}
-        <p>Technologies failed to load</p>
-    {% endif %}
-
-    Or by category<br>
-    {% if categories %}
-        <p>{% for category in categories %}
-        <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
-        {% endfor %}</p>
-    {% else %}
-        <p>Categories failed to load</p>
-    {% endif %}
-
-    Or just see some projects<br>
+            {% if categories %}
+                <p><h3>Or by category</h3>
+                    {% for category in categories %}
+                        <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
+            {% endif %}
+            <h3>Or just see some projects</h3>
+        </div>
+    </div>
+</div>
 {% endblock %}

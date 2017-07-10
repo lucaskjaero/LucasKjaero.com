@@ -24,6 +24,8 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     slug = models.CharField(max_length=50)
     description = models.TextField()
+    what_i_learned = models.TextField(blank=True)
+
     difficulty = models.IntegerField()
     visible = models.BooleanField(default=True)
 
