@@ -1,0 +1,35 @@
+{% extends "portfolio/portfolio_base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+                {% if projects %}
+                    {% for project in projects %}
+                        {% if project.visible %}
+                            <div class="post-preview text-center">
+                            <a href="{% url 'portfolio:project' project.slug %}">
+                                <h2 class="post-title">
+                                    {{ project.name }}
+                                </h2>
+                                <p>
+                                    {{ project.description }}
+                                </p>
+                            </a>
+                            <p class="post-meta">Posted in
+                                {% for category in project.categories %}
+                                    <a href="{% url 'portfolio:view_category' category %}">{{ category }}</a>
+                                {% endfor %}
+                            </p>
+                            </div>
+                            <hr>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p>No projects are available</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

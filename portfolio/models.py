@@ -21,8 +21,10 @@ class Technology(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
+    slug = models.CharField(max_length=50)
     description = models.TextField()
     difficulty = models.IntegerField()
+    visible = models.BooleanField(default=True)
 
     source_open = models.BooleanField(default=True)
     source_available = models.BooleanField(default=True)
