@@ -7,7 +7,8 @@
     {% if technologies %}
         <p>{% for technology in technologies %}
             {% if technology.visible %}
-                <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>,
+                <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>{% if not forloop.last %}, {% endif %}
+
             {% endif %}
         {% endfor %}</p>
     {% else %}
@@ -17,7 +18,7 @@
     Or by category<br>
     {% if categories %}
         <p>{% for category in categories %}
-        <a href="{% url 'portfolio:view_category' category.slug %}">{{ category.name }}</a>,
+        <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
         {% endfor %}</p>
     {% else %}
         <p>Categories failed to load</p>

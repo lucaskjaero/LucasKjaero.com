@@ -19,7 +19,7 @@
                             </a>
                             <p class="post-meta">Posted in
                                 {% for category in project.categories.all %}
-                                    <a href="{% url 'portfolio:view_category' category.slug %}">{{ category.name }}</a>
+                                    <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
                                 {% endfor %}
                             </p>
                             </div>
