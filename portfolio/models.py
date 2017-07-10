@@ -12,8 +12,6 @@ class Category(models.Model):
 class Technology(models.Model):
     name = models.CharField(max_length=50)
     slug = models.CharField(max_length=50)
-    link = models.CharField(max_length=300, blank=True)
-    icon = models.CharField(max_length=300, blank=True)
     visible = models.BooleanField(default=True)
 
     def __str__(self):
