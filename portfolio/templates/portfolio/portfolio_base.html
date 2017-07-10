@@ -15,18 +15,16 @@
 {% block body %}
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('{% block header_image %}{% static 'images/portfolio-bg.jpg' %}{% endblock %}')">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>{% block header %}Portfolio{% endblock %}</h1>
-                        <hr class="small">
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1 align="center">{% block header %}Portfolio{% endblock %}</h1>
+                    <hr class="small">
                 </div>
             </div>
         </div>
-    </header>
+    </div>
 
     <section id="portfolio">
         {% block intro %}{% endblock %}
