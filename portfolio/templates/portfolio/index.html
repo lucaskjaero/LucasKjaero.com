@@ -6,7 +6,7 @@
     Search by technology<br>
     {% if technologies %}
         <p>{% for technology in technologies %}
-        <a href="http://www.lucaskjaero.com/portfolio/tech/{{ technology.slug }}">{{ technology.name }}</a>,
+        <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>,
         {% endfor %}</p>
     {% else %}
         <p>Technologies failed to load</p>
@@ -15,7 +15,7 @@
     Or by category<br>
     {% if categories %}
         <p>{% for category in categories %}
-        <a href="http://www.lucaskjaero.com/portfolio/category/{{ category.slug }}">{{ category.name }}</a>,
+        <a href="{% url 'portfolio:view_category' category.slug %}">{{ category.name }}</a>,
         {% endfor %}</p>
     {% else %}
         <p>Categories failed to load</p>

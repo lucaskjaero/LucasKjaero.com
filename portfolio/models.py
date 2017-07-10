@@ -32,7 +32,7 @@ class Project(models.Model):
     view_link = models.CharField(max_length=300, blank=True)
 
     technologies = models.ManyToManyField(Technology)
-    category = models.ManyToManyField(Category)
+    categories = models.ManyToManyField(Category)
 
     def __str__(self):
         return self.name

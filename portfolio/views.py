@@ -23,5 +23,5 @@ def project(request, project):
 
 def view_category(request, category):
     selected_category = get_object_or_404(Category, slug=category)
-    projects = Project.objects.filter(category=selected_category).order_by('difficulty').reverse()
+    projects = Project.objects.filter(categories=selected_category).order_by('difficulty').reverse()
     return render(request, 'portfolio/view_category.html', {'projects': projects, 'category': selected_category})

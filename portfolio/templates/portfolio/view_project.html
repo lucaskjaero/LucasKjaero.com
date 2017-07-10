@@ -1,0 +1,29 @@
+{% extends "portfolio/portfolio_base.html" %}
+
+{% block header %}
+{{ project.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                {% if project.visible %}
+                    <p>{{ project.description|safe }}</p>
+                    {% if project.source_open %}
+                        <a href="{{ project.view_link }}" class="btn btn-primary btn-xl">View Source</a>
+                    {% else %}
+                        {% if project.source_available %}
+                            <p>This project's source can be shared privately.</p>
+                            <a href="{{ project.view_link }}" class="btn btn-primary btn-xl">Request Source</a>
+                        {% else %}
+                            <p>Unfortunately, the source for {{ project.name }} is unavailable. </p>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <p>This project isn't visible. </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
