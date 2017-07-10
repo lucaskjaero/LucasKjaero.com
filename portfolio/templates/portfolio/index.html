@@ -6,7 +6,9 @@
     Search by technology<br>
     {% if technologies %}
         <p>{% for technology in technologies %}
-        <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>,
+            {% if technology.visible %}
+                <a href="{% url 'portfolio:technology' technology.slug %}">{{ technology.name }}</a>,
+            {% endif %}
         {% endfor %}</p>
     {% else %}
         <p>Technologies failed to load</p>
