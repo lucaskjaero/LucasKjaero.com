@@ -27,7 +27,7 @@
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                    <p>No projects are available</p>
+                    <p><a href="{% url 'portfolio:index' %}">Your search didn't show anything. Click here to see other projects.</a></p>
                 {% endif %}
             </div>
         </div>
