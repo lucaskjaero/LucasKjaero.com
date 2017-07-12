@@ -1,3 +1,4 @@
+from django.http import FileResponse
 from django.shortcuts import render
 
 from blog.models import Post
@@ -26,3 +27,9 @@ def gaojikouyu(request):
 def members(request):
     context = {}
     return render(request, 'members.html', context)
+
+def resume(request):
+    return FileResponse(open('staticfiles/lucas-kjaero-resume.pdf', 'rb'), content_type='application/pdf')
+
+def gerenjianli(request):
+    return FileResponse(open('staticfiles/lucas-kjaero-gerenjianli.pdf', 'rb'), content_type='application/pdf')
