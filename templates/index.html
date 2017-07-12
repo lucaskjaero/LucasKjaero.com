@@ -45,17 +45,55 @@
         </div>
     </section>
 
-    <section id="blog">
-        <div class="container">
+    <section id="portfolio">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Projects</h2>
+                    <hr class="primary">
+
+                    {% if projects %}
+                        {% for project in projects %}
+                            {% if project.visible %}
+                                <div class="post-preview text-center">
+                                <a href="{% url 'portfolio:project' project.slug %}">
+                                    <h2 class="post-title">
+                                        {{ project.name }}
+                                    </h2>
+                                    <p>
+                                        {{ project.description }}
+                                    </p>
+                                </a>
+                                <p class="post-meta">Posted in
+                                    {% for category in project.categories.all %}
+                                        <a href="{% url 'portfolio:view_category' category.slug %}">{{category.name}}</a>{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </p>
+                                </div>
+                                <hr>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <p>Projects couldn't be loaded.</p>
+                    {% endif %}
+
+                    <a href="{% url 'portfolio:index' %}" class="btn btn-primary btn-xl">View More Projects</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="blog" class="bg-primary">
+        <div class="container blog">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Latest Blog Posts</h2>
-                    <hr class="primary">
+                    <hr class="light">
 
                     {% if latest_posts %}
                         {% for post in latest_posts %}
                             <div class="post-preview">
-                            <a href="/blog/view/{{ post.slug }}/">
+                            <a class="blog" style="color:white;" href="{% url 'blog:detail' post.slug %}">
                                 <h2 class="post-title">
                                     {{ post.title }}
                                 </h2>
@@ -65,13 +103,13 @@
                             </a>
                             <p class="post-meta">Posted on {{ post.created_at }}</p>
                             </div>
-                            <hr>
+                            <hr class="light">
                         {% endfor %}
                     {% else %}
-                        <p>No blog posts yet.</p>
+                        <p>Blog posts couldn't be loaded.</p>
                     {% endif %}
 
-                    <a href="{% url 'blog:index' %}" class="btn btn-primary btn-xl">View More</a>
+                    <a href="{% url 'blog:index' %}" class="btn btn-default btn-xl">View More Posts</a>
                 </div>
             </div>
         </div>

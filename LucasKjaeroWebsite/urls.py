@@ -20,11 +20,8 @@ from LucasKjaeroWebsite import views
 
 
 urlpatterns = [
-    url(r'^final/', views.final, name='final'),
     url(r'^resume/', views.resume, name='resume'),
     url(r'^gerenjianli/', views.gerenjianli, name='gerenjianli'),
-    url(r'^gaojikouyu/', views.gaojikouyu, name="gaojikouyu"),
-    url(r'^members/', views.members, name="members"),
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^projects/', include('portfolio.urls', namespace="portfolio")),
     url(r'^admin/', include(admin.site.urls)),

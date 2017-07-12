@@ -26,6 +26,7 @@ class Project(models.Model):
 
     difficulty = models.IntegerField()
     visible = models.BooleanField(default=True)
+    finished = models.BooleanField(default=True)
 
     source_open = models.BooleanField(default=True)
     source_available = models.BooleanField(default=True)

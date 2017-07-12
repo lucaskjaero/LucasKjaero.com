@@ -59,10 +59,10 @@
                         <a href="{% url 'portfolio:index' %}">Projects</a>
                     </li>
                     <li>
-                        <a href="https://www.linkedin.com/profile/view?id=AAIAAApknAIBNk4X361ZEyzVLU-CXEy_jhxiagc">LinkedIn</a>
+                        <a href="https://www.linkedin.com/in/lucas-kjaero/">LinkedIn</a>
                     </li>
                     <li>
-                      <a href="https://www.dropbox.com/s/kt1ewmpbz1nawcz/lucas-kjaero-resume.pdf?dl=1">Resume</a>
+                      <a href="{% static 'lucas-kjaero-resume.pdf' %}">Resume</a>
                     </li>
                     <li>
                         <a {% block contact_link %}href="{% url 'index' %}#contact"{% endblock %}>Contact</a>

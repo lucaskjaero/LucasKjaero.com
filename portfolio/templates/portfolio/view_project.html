@@ -18,6 +18,13 @@
                         {{ project.what_i_learned|safe }}
                     </p>
                     <p>
+                        {% if project.finished %}
+                            This project is complete.
+                        {% else %}
+                            This project is still under development. 
+                        {% endif %}
+                    </p>
+                    <p>
                         Built with
                         {% for technology in project.technologies.all %}
                             {% if forloop.last %}and {% endif %}<a href="{% url 'portfolio:technology' technology.slug %}">{{technology.name}}</a>{% if not forloop.last %}, {% endif %}
