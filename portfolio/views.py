@@ -43,21 +43,18 @@ def request_source(request, project):
             email = form.cleaned_data['email']
             agreement = form.cleaned_data['agreement']
 
-            recipient = 'lucas@lucaskjaero.com'
-            sender = 'django@lucaskjaero.com'
+            to_email = Email('lucas@lucaskjaero.com')
+            from_email = Email('django@lucaskjaero.com')
 
             subject = "Source for %s has been requested" % project
             message = "Source for %s has been requested\nName: %s\nEmail: %s" % (project, name, email)
+            content = Content("text/plain", message)
 
-            sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY'])
-            message = sendgrid.Mail()
-            message.add_to(recipient)
-            message.set_from(sender)
-            message.set_subject(subject)
-            message.set_html(message)
+            sg = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+            mail = Mail(from_email, subject, to_email, content)
 
             if agreement:
-                sg.send(message)
+                sg.client.mail.send.post(request_body=mail.get())
                 messages.success(request, 'Source has been requested.')
             else:
                 messages.error(request, 'You need to agree to the terms.')
