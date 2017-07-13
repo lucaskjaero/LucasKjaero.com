@@ -4,6 +4,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
+import sendgrid
+
 from .forms import NameForm
 from .models import Category, Project, Technology
 
@@ -41,14 +43,21 @@ def request_source(request, project):
             email = form.cleaned_data['email']
             agreement = form.cleaned_data['agreement']
 
-            recipients = ['lucas@lucaskjaero.com']
+            recipient = 'lucas@lucaskjaero.com'
             sender = 'django@lucaskjaero.com'
 
             subject = "Source for %s has been requested" % project
             message = "Source for %s has been requested\nName: %s\nEmail: %s" % (project, name, email)
 
+            sg = sendgrid.SendGridClient(os.environ['SENDGRID_API_KEY'])
+            message = sendgrid.Mail()
+            message.add_to(recipient)
+            message.set_from(sender)
+            message.set_subject(subject)
+            message.set_html(message)
+
             if agreement:
-                send_mail(subject, message, sender, recipients)
+                sg.send(message)
                 messages.success(request, 'Source has been requested.')
             else:
                 messages.error(request, 'You need to agree to the terms.')
