@@ -4,10 +4,18 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
+import os
+
 import sendgrid
+from sendgrid.helpers.mail import *
 
 from .forms import NameForm
 from .models import Category, Project, Technology
+
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 def index(request):
