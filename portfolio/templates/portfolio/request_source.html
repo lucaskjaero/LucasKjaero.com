@@ -1,0 +1,28 @@
+{% extends "portfolio/portfolio_base.html" %}
+
+{% load staticfiles %}
+
+{% block title %}{{ project }} Source Request{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <h3>Conditions</h3>
+            <ul>
+                <li>You agree not to share the code with anyone else</li>
+                <li>You acknowledge that this code comes with no warranty</li>
+                <li>You acknowledge that this code is the sole ownership of Lucas Kjaero</li>
+                <li>You aren't a current student working on the same project</li>
+            </ul>
+            <form action="{% url 'portfolio:request_source' project %}" method="post">
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                <input class="btn btn-primary btn-xl" type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
