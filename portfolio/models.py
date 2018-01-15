@@ -30,6 +30,7 @@ class Project(models.Model):
 
     source_open = models.BooleanField(default=True)
     source_available = models.BooleanField(default=True)
+    product_visible = models.BooleanField(default=False)
 
     view_link = models.CharField(max_length=300, blank=True)
 

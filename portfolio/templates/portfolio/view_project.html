@@ -45,7 +45,11 @@
                             <p>This project's source can be shared privately.</p>
                             <a href="{% url 'portfolio:request_source' project.slug %}" class="btn btn-primary btn-xl">Request Source</a>
                         {% else %}
-                            <p>Unfortunately, the source for {{ project.name }} is unavailable. </p>
+                            {% if project.product_visible %}
+                                <a href="{{ project.view_link }}" class="btn btn-primary btn-xl">View Product</a>
+                            {% else %}
+                                <p>Unfortunately, the source for {{ project.name }} is unavailable. </p>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
                 {% else %}
