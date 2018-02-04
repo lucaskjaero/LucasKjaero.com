@@ -25,7 +25,7 @@ class Post(models.Model):
     image = models.CharField(max_length=300,
                              default="/static/blog/images/default-post-bg.jpg")
     published = models.BooleanField(default=True)
-    category = models.ForeignKey(Category, null=True)
+    category = models.ForeignKey(Category, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
