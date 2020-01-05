@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
@@ -7,7 +6,7 @@ from django.urls import reverse
 import os
 
 import sendgrid
-from sendgrid.helpers.mail import *
+from sendgrid.helpers.mail import Content, Email, Mail
 
 from .forms import NameForm
 from .models import Category, Project, Technology
@@ -17,7 +16,7 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
-# Create your views here.
+
 def index(request):
     categories = Category.objects.order_by('name')
     technologies = Technology.objects.order_by('name')

@@ -15,11 +15,13 @@ def index(request):
     hardest_projects = Project.objects.filter(visible=True).order_by('difficulty').reverse()[:3]
 
     context = {'latest_posts': latest_posts,
-               'projects': hardest_projects,}
+               'projects': hardest_projects, }
     return render(request, 'index.html', context)
+
 
 def resume(request):
     return FileResponse(open('LucasKjaeroWebsite/static/lucas-kjaero-resume.pdf', 'rb'), content_type='application/pdf')
+
 
 def gerenjianli(request):
     return FileResponse(open('LucasKjaeroWebsite/static/lucas-kjaero-gerenjianli.pdf', 'rb'), content_type='application/pdf')
