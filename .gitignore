@@ -103,3 +103,5 @@ ENV/
 # Test server database is not for public release.
 db.sqlite3
 staticfiles/lucas-kjaero-gerenjianli.pdf.gz
+
+.DS_Store
