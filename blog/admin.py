@@ -8,4 +8,5 @@ admin.site.register(Category)
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at', 'category', 'published')
 
+
 admin.site.register(Post, PostAdmin)
